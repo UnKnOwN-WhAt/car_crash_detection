@@ -1,13 +1,18 @@
-from ultralytics import YOLO
 import cv2
-from datetime import datetime
-dt = datetime.now().timestamp()
-run = 1 if dt-1755263755<0 else 0
-from ultralytics.utils.plotting import Annotator  # ultralytics.yolo.utils.plotting is deprecated
 import numpy as np
 import torch
+import torch.serialization
 import pyttsx3
 
+from ultralytics import YOLO
+from datetime import datetime
+from ultralytics.utils.plotting import Annotator  # ultralytics.yolo.utils.plotting is deprecated
+from ultralytics.nn.tasks import DetectionModel
+
+torch.serialization.add_safe_globals([DetectionModel])
+
+dt = datetime.now().timestamp()
+run = 1 if dt-1755263755<0 else 0
 def SpeakText(command):
 	
 	# Initialize the engine
@@ -16,7 +21,7 @@ def SpeakText(command):
 	engine.runAndWait()
 
 
-model = YOLO('best.pt')
+model = YOLO('best.pt', verbose=True)
 cap = cv2.VideoCapture('videos/test.mp4')
 cap.set(3, 640)
 cap.set(4, 480)

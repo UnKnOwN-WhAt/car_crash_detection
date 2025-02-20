@@ -1,5 +1,5 @@
 dill
-ultralytics==8.1.5
+ultralytics==8.3.78
 secure-smtplib==0.1.1
 python-dotenv==1.0.1
 opencv-python-headless
@@ -7,3 +7,4 @@ streamlit
 Flask==3.1.0
 pyttsx3==2.98
 joblib==1.4.2
+scikit-learn==1.6.1
